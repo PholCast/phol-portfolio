@@ -1,50 +1,45 @@
-import { useMemo, useRef } from 'react'
-import Modal from 'react-modal'
+import { useMemo, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, A11y, Keyboard } from 'swiper/modules'
-import { FaArrowUpRightFromSquare, FaGithub, FaExpand, FaXmark } from 'react-icons/fa6'
+import { FaArrowUpRightFromSquare, FaChevronLeft, FaChevronRight, FaGithub, FaExpand, FaXmark } from 'react-icons/fa6'
 import 'swiper/css'
-import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-const slideProps = {
-  navigation: true,
-  pagination: { clickable: true }
-}
+const GalleryArrowButton = ({ direction, onClick, disabled = false, className = '' }) => (
+  <button
+    type="button"
+    onClick={onClick}
+    disabled={disabled}
+    aria-label={direction === 'prev' ? 'Previous image' : 'Next image'}
+    className={`inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-slate-950/75 text-white shadow-[0_10px_30px_rgba(0,0,0,0.45)] backdrop-blur-md transition duration-200 hover:scale-105 hover:bg-slate-900/90 disabled:cursor-not-allowed disabled:opacity-40 ${className}`}
+  >
+    {direction === 'prev' ? <FaChevronLeft className="h-3.5 w-3.5" /> : <FaChevronRight className="h-3.5 w-3.5" />}
+  </button>
+)
 
-const MediaSlide = ({ src, poster, type, label }) => {
+const MediaSlide = ({ src, poster, type, label, compact = false, onOpenViewer, viewerLabel }) => {
   const mediaRef = useRef(null)
 
-  const handleFullscreen = () => {
-    const element = mediaRef.current
-    if (element?.requestFullscreen) {
-      element.requestFullscreen().catch(() => {
-        window.open(src, '_blank', 'noopener,noreferrer')
-      })
-      return
-    }
-    window.open(src, '_blank', 'noopener,noreferrer')
-  }
-
   return (
-    <div className="relative overflow-hidden rounded-[26px] border border-white/10 bg-white/5 p-3">
-      <div className="relative aspect-[16/9] overflow-hidden rounded-[20px] bg-slate-950/70">
+    <div className="relative flex w-full flex-col overflow-hidden rounded-[26px] border border-white/10 bg-white/5 p-3">
+      <div className={`relative flex w-full items-center justify-center overflow-hidden rounded-[20px] bg-slate-950/70 ${compact ? 'h-[clamp(310px,40vh,440px)]' : 'aspect-video'}`}>
         {type === 'video' ? (
-          <video ref={mediaRef} className="h-full w-full object-cover" src={src} poster={poster} controls playsInline muted loop />
+          <video ref={mediaRef} className="max-h-full max-w-full object-contain" src={src} poster={poster} controls playsInline muted loop />
         ) : (
-          <img ref={mediaRef} src={src} alt={label} loading="lazy" className="h-full w-full object-cover" />
+          <img ref={mediaRef} src={src} alt={label} loading="lazy" className="mx-auto max-h-full max-w-full object-contain object-center" />
         )}
-
-        <button
-          type="button"
-          onClick={handleFullscreen}
-          className="absolute right-3 top-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/45 px-3 py-2 text-xs font-medium text-white backdrop-blur-md transition hover:bg-black/65"
-          aria-label={`${label} fullscreen`}
-        >
-          <FaExpand />
-          Fullscreen
-        </button>
+        {type === 'image' && onOpenViewer && (
+          <button
+            type="button"
+            onClick={onOpenViewer}
+            className="absolute bottom-3 right-3 z-20 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/65 px-3 py-2 text-xs font-medium text-white shadow-[0_10px_25px_rgba(0,0,0,0.35)] backdrop-blur-md transition hover:bg-black/80"
+            aria-label={viewerLabel}
+          >
+            <FaExpand />
+            {viewerLabel}
+          </button>
+        )}
       </div>
       <p className="mt-3 text-xs uppercase tracking-[0.35em] text-white/50">{label}</p>
     </div>
@@ -53,31 +48,37 @@ const MediaSlide = ({ src, poster, type, label }) => {
 
 const ProjectModal = ({ isOpen, onClose, project, copy, locale }) => {
   const imageSlides = useMemo(() => [project?.mainImage, ...(project?.gallery || [])].filter(Boolean), [project])
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0)
+  const [isImageViewerOpen, setIsImageViewerOpen] = useState(false)
+  const activeImageSrc = imageSlides[activeSlideIndex] || project?.mainImage || ''
+  const imageWrapperRef = useRef(null)
+  const [swiperInstance, setSwiperInstance] = useState(null)
 
   if (!project) return null
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={onClose}
-      closeTimeoutMS={200}
-      overlayClassName="fixed inset-0 z-[70] bg-black/75 backdrop-blur-lg"
-      className="outline-none"
-      ariaHideApp={false}
-      contentLabel={project.name[locale]}
-    >
-      <AnimatePresence>
-        {isOpen && (
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          role="dialog"
+          aria-modal="true"
+          aria-label={project.name[locale]}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-[70] bg-black/75 backdrop-blur-lg"
+          onMouseDown={onClose}
+        >
           <motion.div
             initial={{ opacity: 0, y: 24, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.98 }}
             transition={{ duration: 0.28, ease: 'easeOut' }}
             className="mx-auto mt-4 flex h-[calc(100vh-2rem)] w-[min(1200px,calc(100vw-1.5rem))] flex-col overflow-hidden rounded-[34px] border border-white/10 bg-[#07101f] shadow-[0_30px_120px_rgba(0,0,0,0.55)]"
+            onMouseDown={(event) => event.stopPropagation()}
           >
             <div className="flex items-center justify-between border-b border-white/10 px-5 py-4 sm:px-6">
               <div>
-                <p className="text-xs uppercase tracking-[0.35em] text-white/45">Case study</p>
                 <h3 className="mt-1 text-xl font-semibold text-white sm:text-2xl">{project.name[locale]}</h3>
               </div>
               <button
@@ -90,38 +91,58 @@ const ProjectModal = ({ isOpen, onClose, project, copy, locale }) => {
               </button>
             </div>
 
-            <div className="grid flex-1 gap-6 overflow-y-auto px-5 py-5 sm:px-6 lg:grid-cols-[1.12fr_0.88fr]">
-              <div className="space-y-6">
-                <motion.img
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.45 }}
-                  src={project.mainImage}
-                  alt={project.name[locale]}
-                  className="h-auto w-full rounded-[28px] border border-white/10 object-cover"
-                  loading="lazy"
-                />
+            <div className="flex flex-1 min-h-0 flex-col gap-5 overflow-y-auto px-5 py-5 sm:px-6">
+              <div className="space-y-3">
+                {/* <h4 className="text-sm font-semibold uppercase tracking-[0.35em] text-white/50">{copy.images}</h4> */}
+                <div className="relative overflow-hidden rounded-[30px] border border-white/10 bg-white/5 p-3" ref={imageWrapperRef}>
+                  <Swiper
+  className="project-modal-image-swiper h-full"
+  modules={[Pagination, A11y, Keyboard]}
+  keyboard
+  pagination={{ clickable: true }}
+  spaceBetween={16}
+  slidesPerView={1}
+  onSwiper={(swiper) => setSwiperInstance(swiper)}
+  onSlideChange={(swiper) => {
+    setActiveSlideIndex(swiper.activeIndex)
+  }}
+>
+  {imageSlides.map((image, index) => (
+    <SwiperSlide key={index}>
+      <div className="flex h-full w-full items-center justify-center">
+        <MediaSlide
+          src={image}
+          type="image"
+          label={`${project.name[locale]} ${index + 1}`}
+          viewerLabel={copy.openFullscreen}
+          compact
+          onOpenViewer={() => setIsImageViewerOpen(true)}
+        />
+      </div>
+    </SwiperSlide>
+  ))}
+</Swiper>
 
-                <div>
-                  <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-white/50">{copy.images}</h4>
-                  <Swiper modules={[Navigation, Pagination, A11y, Keyboard]} keyboard {...slideProps} spaceBetween={16} slidesPerView={1.05} breakpoints={{ 768: { slidesPerView: 1.2 } }}>
-                    {imageSlides.map((image, index) => (
-                      <SwiperSlide key={index}>
-                        <MediaSlide src={image} type="image" label={`${project.name[locale]} ${index + 1}`} />
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                </div>
-
-                <div>
-                  <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-white/50">{copy.videos}</h4>
-                  <Swiper modules={[Navigation, Pagination, A11y, Keyboard]} keyboard {...slideProps} spaceBetween={16} slidesPerView={1.05} breakpoints={{ 768: { slidesPerView: 1.2 } }}>
-                    {project.videos.map((video, index) => (
-                      <SwiperSlide key={index}>
-                        <MediaSlide src={video.src} poster={video.poster} type="video" label={`${project.name[locale]} video ${index + 1}`} />
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
+{imageSlides.length > 1 && (
+  <>
+    <div className="pointer-events-none absolute inset-y-0 left-3 z-20 flex items-center">
+      <GalleryArrowButton
+        direction="prev"
+        onClick={() => swiperInstance?.slidePrev()}
+        disabled={activeSlideIndex === 0}
+        className="pointer-events-auto"
+      />
+    </div>
+    <div className="pointer-events-none absolute inset-y-0 right-3 z-20 flex items-center">
+      <GalleryArrowButton
+        direction="next"
+        onClick={() => swiperInstance?.slideNext()}
+        disabled={activeSlideIndex >= imageSlides.length - 1}
+        className="pointer-events-auto"
+      />
+    </div>
+  </>
+)}
                 </div>
               </div>
 
@@ -144,7 +165,7 @@ const ProjectModal = ({ isOpen, onClose, project, copy, locale }) => {
                     href={project.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-3 text-sm font-semibold text-slate-950 transition hover:opacity-90"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
                   >
                     <FaGithub />
                     {copy.viewGitHub}
@@ -159,12 +180,48 @@ const ProjectModal = ({ isOpen, onClose, project, copy, locale }) => {
                     {copy.viewDemo}
                   </a>
                 </div>
+
+                <div>
+                  <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-white/50">{copy.videos}</h4>
+                  <Swiper modules={[Navigation, Pagination, A11y, Keyboard]} keyboard navigation pagination={{ clickable: true }} spaceBetween={16} slidesPerView={1}>
+                    {project.videos.map((video, index) => (
+                      <SwiperSlide key={index}>
+                        <MediaSlide src={video.src} poster={video.poster} type="video" label={`${project.name[locale]} video ${index + 1}`} compact />
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </div>
               </div>
             </div>
+
+            <AnimatePresence>
+              {isImageViewerOpen && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="absolute inset-0 z-30 flex items-center justify-center bg-black/88 px-4 py-4 backdrop-blur-xl"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setIsImageViewerOpen(false)}
+                    className="absolute right-4 top-4 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white transition hover:bg-white/15"
+                    aria-label={copy.close}
+                  >
+                    <FaXmark />
+                  </button>
+                  <img
+                    src={activeImageSrc}
+                    alt={project.name[locale]}
+                    className="max-h-[92vh] max-w-[96vw] rounded-[24px] border border-white/10 object-contain shadow-[0_30px_100px_rgba(0,0,0,0.65)]"
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
-        )}
-      </AnimatePresence>
-    </Modal>
+        </motion.div>
+      )}
+    </AnimatePresence>
   )
 }
 

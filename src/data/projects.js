@@ -1,4 +1,5 @@
 import { createProjectPreview } from '../utils/svgPreview'
+import project1Image from '../assets/images/project_1.png'
 
 export const projects = [
   {
@@ -9,19 +10,19 @@ export const projects = [
       en: 'E-commerce platform focused on modular architecture and conversion.'
     },
     longDescription: {
-      es: 'Sentinel Commerce fue concebido como un frontend premium para una tienda digital moderna. La experiencia prioriza navegación clara, microinteracciones precisas y una jerarquía visual que guía al usuario desde la exploración hasta la compra. El proyecto combina componentes reutilizables, estados bien resueltos y una base preparada para escalar a múltiples catálogos, métodos de pago y panel administrativo.',
-      en: 'Sentinel Commerce was designed as a premium frontend for a modern digital store. The experience prioritizes clear navigation, precise microinteractions and a visual hierarchy that guides users from discovery to checkout. The project combines reusable components, well-handled states and a foundation ready to scale to multiple catalogs, payment methods and an admin panel.'
+      es: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      en: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
     },
     technologies: ['React', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'PostgreSQL'],
     github: 'https://github.com/',
     demo: 'https://example.com',
-    mainImage: createProjectPreview({ title: 'Sentinel Commerce', tag: 'E-commerce interface and product discovery', accent: '#8b5cf6', accentTwo: '#38bdf8' }),
+    mainImage: project1Image,
     gallery: [
-      createProjectPreview({ title: 'Sentinel Checkout', tag: 'Cart and checkout flow', accent: '#22c55e', accentTwo: '#38bdf8' }),
-      createProjectPreview({ title: 'Sentinel Admin', tag: 'Inventory dashboard', accent: '#f97316', accentTwo: '#8b5cf6' })
+      project1Image,
+      project1Image
     ],
     videos: [
-      { src: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4', poster: createProjectPreview({ title: 'Motion preview', tag: 'Product animation', accent: '#0ea5e9', accentTwo: '#8b5cf6' }) }
+      { src: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4', poster: project1Image }
     ]
   },
   {

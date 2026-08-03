@@ -22,7 +22,7 @@ const SkillsSection = ({ mainSkills, categories, copy, locale }) => {
           {copy.title}
         </ScrollFloat>
 
-        <div className="mt-14">
+        <div className="mt-8">
           <h3 className="mb-6 text-center text-sm font-semibold uppercase tracking-[0.35em] text-white/50">
             {copy.main}
           </h3>
