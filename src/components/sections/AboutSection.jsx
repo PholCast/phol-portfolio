@@ -16,7 +16,7 @@ const AboutSection = ({ copy }) => {
           baseRadius={0.28}
           radiusStep={0.1}
           scaleRate={0.08}
-          opacity={0.55}
+          opacity={1}
           noiseAmount={0.02}
           rotation={-8}
           ringGap={1.35}

@@ -17,17 +17,17 @@ const HeroSection = ({ copy, socials, onNavigate, profileImage, theme }) => {
     <section id="hero" className="relative overflow-hidden pt-26 sm:pt-30 lg:pt-34">
       <div className="absolute inset-0">
         <DotField
-          dotRadius={1.4}
+          dotRadius={2}
           dotSpacing={15}
           cursorRadius={520}
           cursorForce={0.12}
           bulgeOnly
           bulgeStrength={70}
-          glowRadius={220}
+          glowRadius={150}
           sparkle
           gradientFrom="rgba(99, 102, 241, 0.35)"
           gradientTo="rgba(168, 85, 247, 0.2)"
-          glowColor={theme === 'dark' ? '#09111f' : '#f8fafc'}
+          glowColor={theme === 'dark' ? '#044fd1' : '#f8fafc'}
         />
       </div>
 
@@ -108,7 +108,7 @@ const HeroSection = ({ copy, socials, onNavigate, profileImage, theme }) => {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.3 }}
-        className="group mx-auto mb-4 flex flex-col items-center gap-2 text-white/70"
+        className="group relative z-10 mx-auto mb-4 flex flex-col items-center gap-2 text-white/70 cursor-pointer"
         aria-label={copy.scroll}
       >
         <span className="text-xs uppercase tracking-[0.45em]">{copy.scroll}</span>

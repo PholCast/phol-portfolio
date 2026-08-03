@@ -479,7 +479,7 @@ const ProfileCardComponent = ({
             <div
               className="overflow-visible backface-hidden"
               style={{
-                mixBlendMode: 'luminosity',
+                mixBlendMode: 'normal',
                 transform: 'translateZ(2px)',
                 gridArea: '1 / -1',
                 borderRadius: cardRadius,

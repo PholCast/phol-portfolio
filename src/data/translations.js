@@ -1,11 +1,11 @@
 export const translations = {
   es: {
-    nav: ['Hero', 'About', 'Projects', 'Skills', 'Contact'],
+    nav: ['Inicio', 'Sobre mí', 'Proyectos', 'Habilidades', 'Contacto'],
     hero: {
       intro: "Hi, I'm",
       name: 'Phol Castañeda',
-      role: 'Full Stack Developer',
-      description: 'Building secure, scalable, and high-performance web applications.',
+      role: 'Desarrollador Full Stack',
+      description: 'Construyendo aplicaciones web seguras, escalables y de alto rendimiento.',
       available: 'Disponible',
       scroll: 'Scroll',
       buttons: {
@@ -65,7 +65,7 @@ export const translations = {
         mail: 'Mail',
         github: 'GitHub',
         linkedin: 'LinkedIn',
-        cv: 'Download CV'
+        cv: 'CV'
       }
     },
     about: {
