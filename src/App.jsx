@@ -25,6 +25,23 @@ function App() {
 
   const copy = translations[language]
 
+  const cvFile =
+    language === 'es'
+      ? '/cv/Phol_Castaneda_CV_ES.pdf'
+      : '/cv/Phol_Castaneda_CV_EN.pdf'
+
+  const heroSocials = {
+    ...socials,
+    heroActions: {
+      ...socials.heroActions,
+      cv: {
+        ...socials.heroActions.cv,
+        href: cvFile,
+        download: cvFile.split('/').pop()
+      }
+    }
+  }
+
   const getPredominantSection = () => {
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight
     let bestId = null
@@ -179,7 +196,7 @@ function App() {
       <main className="relative z-10">
         <HeroSection
           copy={copy.hero}
-          socials={socials}
+          socials={heroSocials}
           onNavigate={scrollToSection}
           profileImage={profileImage}
           theme={theme}

@@ -159,7 +159,7 @@ const ProjectModal = ({ isOpen, onClose, project, copy, locale }) => {
                             </div>
 
                             <div className="space-y-6 rounded-[28px] border border-white/10 bg-white/5 p-5 sm:p-6">
-                                <p className="text-sm leading-7 text-white/75">{project.longDescription[locale]}</p>
+                                <p className="whitespace-pre-line text-sm leading-7 text-white/75">{project.longDescription[locale]}</p>
 
                                 <div>
                                     <h4 className="text-sm font-semibold uppercase tracking-[0.35em] text-white/50">{copy.tech}</h4>

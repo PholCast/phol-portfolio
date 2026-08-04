@@ -2,14 +2,14 @@ export const translations = {
   es: {
     nav: ['Inicio', 'Sobre mí', 'Proyectos', 'Habilidades', 'Contacto'],
     hero: {
-      intro: "Hi, I'm",
+      intro: "Hola, Soy",
       name: 'Phol Castañeda',
       role: 'Desarrollador Full Stack',
       description: 'Construyendo aplicaciones web seguras, escalables y de alto rendimiento.',
       available: 'Disponible',
-      scroll: 'Scroll',
+      scroll: 'Ver más',
       buttons: {
-        mail: 'Mail',
+        mail: 'Correo',
         github: 'GitHub',
         linkedin: 'LinkedIn',
         cv: 'CV'
@@ -22,7 +22,7 @@ export const translations = {
     },
     projects: {
       title: 'Proyectos destacados',
-      subtitle: 'Casos de estudio seleccionados con foco en UX, arquitectura y performance.',
+      subtitle: 'Una selección de proyectos que demuestra mi experiencia en el desarrollo de aplicaciones web utilizando tecnologías modernas y buenas prácticas de ingeniería de software.',
       viewGitHub: 'GitHub',
       viewDemo: 'Demo',
       modal: {
@@ -75,7 +75,7 @@ export const translations = {
     },
     projects: {
       title: 'Selected projects',
-      subtitle: 'Curated case studies focused on UX, architecture and performance.',
+      subtitle: 'A selection of projects that demonstrates my experience in developing web applications using modern technologies and software engineering best practices.',
       viewGitHub: 'GitHub',
       viewDemo: 'Demo',
       modal: {
