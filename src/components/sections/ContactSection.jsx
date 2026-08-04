@@ -3,8 +3,15 @@ import { motion } from 'framer-motion'
 import { FaEnvelope, FaGithub, FaLinkedinIn, FaArrowRightLong } from 'react-icons/fa6'
 import ScrollFloat from '../effects/ScrollFloat'
 
+const initialForm = {
+  name: '',
+  email: '',
+  subject: '',
+  message: ''
+}
+
 const ContactSection = ({ copy, socials }) => {
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
+  const [form, setForm] = useState(initialForm)
   const [errors, setErrors] = useState({})
   const [status, setStatus] = useState('idle')
 
@@ -14,6 +21,10 @@ const ContactSection = ({ copy, socials }) => {
     const { name, value } = event.target
     setForm((current) => ({ ...current, [name]: value }))
     setErrors((current) => ({ ...current, [name]: '' }))
+    
+    if (status !== 'idle') {
+      setStatus('idle')
+    }
   }
 
   const validate = () => {
@@ -35,11 +46,18 @@ const ContactSection = ({ copy, socials }) => {
       return
     }
 
-    const mailto = `mailto:${socials.email}?subject=${encodeURIComponent(form.subject)}&body=${encodeURIComponent(
+    const email = socials.links
+      .find(link => link.key === 'email')?.href
+
+    const mailto = `${email}?subject=${encodeURIComponent(form.subject)}&body=${encodeURIComponent(
       `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
     )}`
-    window.location.href = mailto
+
+    setForm(initialForm)
+    setErrors({})
     setStatus('success')
+
+    window.location.href = mailto
   }
 
   const socialsList = [
@@ -124,9 +142,16 @@ const ContactSection = ({ copy, socials }) => {
             </label>
 
             <div className="mt-5 flex items-center justify-between gap-4">
-              <p className={`text-sm ${status === 'error' ? 'text-rose-300' : 'text-emerald-300'}`}>
-                {status === 'error' ? copy.form.error : copy.form.success}
-              </p>
+              <div className="min-h-5 flex-1">
+                {status !== 'idle' && (
+                  <p
+                    className={`text-sm ${status === 'error' ? 'text-rose-300' : 'text-emerald-300'
+                      }`}
+                  >
+                    {status === 'error' ? copy.form.error : copy.form.success}
+                  </p>
+                )}
+              </div>
 
               <motion.button
                 type="submit"
@@ -164,7 +189,7 @@ const ContactSection = ({ copy, socials }) => {
                     </span>
                     <div>
                       <p className="text-base font-semibold">{item.label}</p>
-                      <p className="text-sm text-white/50">{item.href.replace('mailto:', '')}</p>
+                      {item.key !== 'email' && <p className="text-sm text-white/50">{item.href}</p>}
                     </div>
                   </div>
                   <FaArrowRightLong className="text-white/35 transition group-hover:translate-x-1" />

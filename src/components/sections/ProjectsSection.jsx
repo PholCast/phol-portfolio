@@ -76,7 +76,7 @@ const ProjectsSection = ({ projects, copy, locale, onSelectProject }) => {
                         target="_blank"
                         rel="noreferrer"
                         onClick={(event) => event.stopPropagation()}
-                        className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-3 text-sm font-semibold text-slate-950 transition hover:opacity-90"
+                        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
                       >
                         <FaArrowUpRightFromSquare />
                         {copy.viewDemo}
