@@ -1,4 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
 @import "tailwindcss";
+
+@theme {
+	--font-display: 'Space Grotesk', 'Manrope', sans-serif;
+}
 
 :root {
 	color-scheme: dark;
@@ -8,16 +13,6 @@
 	--page-border: rgba(255, 255, 255, 0.09);
 	--page-text: rgba(255, 255, 255, 0.92);
 	--page-muted: rgba(226, 232, 240, 0.66);
-}
-
-:root[data-theme='light'] {
-	color-scheme: light;
-	--page-bg: #f8fbff;
-	--page-surface: rgba(255, 255, 255, 0.72);
-	--page-surface-strong: rgba(255, 255, 255, 0.94);
-	--page-border: rgba(20, 31, 61, 0.08);
-	--page-text: rgba(10, 15, 28, 0.94);
-	--page-muted: rgba(15, 23, 42, 0.68);
 }
 
 html {

@@ -16,7 +16,6 @@ import profileImage from './assets/images/phol-profile.webp'
 const sectionIds = ['hero', 'about', 'projects', 'skills', 'contact']
 
 function App() {
-  const [theme, setTheme] = useState(() => localStorage.getItem('portfolio-theme') || 'dark')
   const [language, setLanguage] = useState(() => localStorage.getItem('portfolio-language') || 'es')
   const [activeSection, setActiveSection] = useState('hero')
   const [selectedProject, setSelectedProject] = useState(null)
@@ -64,10 +63,6 @@ function App() {
     return bestId
   }
 
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme
-    localStorage.setItem('portfolio-theme', theme)
-  }, [theme])
 
   useEffect(() => {
     localStorage.setItem('portfolio-language', language)
@@ -187,8 +182,6 @@ function App() {
         items={navItems}
         activeIndex={sectionIds.indexOf(activeSection)}
         onNavigate={scrollToSection}
-        theme={theme}
-        onToggleTheme={() => setTheme((current) => (current === 'dark' ? 'light' : 'dark'))}
         language={language}
         onToggleLanguage={() => setLanguage((current) => (current === 'es' ? 'en' : 'es'))}
       />
@@ -199,7 +192,6 @@ function App() {
           socials={heroSocials}
           onNavigate={scrollToSection}
           profileImage={profileImage}
-          theme={theme}
         />
         <AboutSection copy={copy.about} />
         <ProjectsSection

@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion'
 import GooeyNav from '../ui/GooeyNav'
-import { FaMoon, FaSun } from 'react-icons/fa6'
 
-const Navbar = ({ name, items, activeIndex, onNavigate, theme, onToggleTheme, language, onToggleLanguage }) => {
+const Navbar = ({ name, items, activeIndex, onNavigate, language, onToggleLanguage }) => {
   const navItems = items.map((item) => ({ label: item.label, href: `#${item.id}` }))
 
   return (
@@ -13,7 +12,7 @@ const Navbar = ({ name, items, activeIndex, onNavigate, theme, onToggleTheme, la
           onClick={() => onNavigate(0)}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="flex-shrink-0 text-left text-sm font-semibold tracking-[0.25em] text-white/90 sm:text-base"
+          className="flex-shrink-0 text-left font-display text-base font-semibold tracking-[0.08em] text-white/90 sm:text-lg"
           aria-label={`${name} home`}
         >
           {name}
@@ -24,7 +23,7 @@ const Navbar = ({ name, items, activeIndex, onNavigate, theme, onToggleTheme, la
         </div>
 
         <nav className="flex flex-1 items-center justify-end gap-2 lg:flex-none">
-          <motion.button
+          {/* <motion.button
             type="button"
             onClick={onToggleTheme}
             whileHover={{ scale: 1.05 }}
@@ -34,7 +33,7 @@ const Navbar = ({ name, items, activeIndex, onNavigate, theme, onToggleTheme, la
           >
             {theme === 'dark' ? <FaSun /> : <FaMoon />}
             <span className="hidden sm:inline">{theme === 'dark' ? 'Dark' : 'Light'}</span>
-          </motion.button>
+          </motion.button> */}
 
           <motion.button
             type="button"

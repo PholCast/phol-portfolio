@@ -10,7 +10,7 @@ const heroButtonVariants = {
   hover: { y: -2 }
 }
 
-const HeroSection = ({ copy, socials, onNavigate, profileImage, theme }) => {
+const HeroSection = ({ copy, socials, onNavigate, profileImage }) => {
   const actions = copy.buttons
 
   return (
@@ -27,7 +27,7 @@ const HeroSection = ({ copy, socials, onNavigate, profileImage, theme }) => {
           sparkle
           gradientFrom="rgba(99, 102, 241, 0.35)"
           gradientTo="rgba(168, 85, 247, 0.2)"
-          glowColor={theme === 'dark' ? '#044fd1' : '#f8fafc'}
+          glowColor="#044fd1"
         />
       </div>
 
