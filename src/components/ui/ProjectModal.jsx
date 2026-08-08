@@ -250,7 +250,7 @@ const ProjectModal = ({ isOpen, onClose, project, copy, locale }) => {
                                     <img
                                         src={activeImageSrc}
                                         alt={project.name[locale]}
-                                        className="max-h-[92vh] max-w-[96vw] rounded-[24px] border border-white/10 object-contain shadow-[0_30px_100px_rgba(0,0,0,0.65)]"
+                                        className="max-h-[85vh] max-w-[90vw] rounded-[24px] border border-white/10 object-contain shadow-[0_30px_100px_rgba(0,0,0,0.65)]"
                                     />
                                 </motion.div>
                             )}

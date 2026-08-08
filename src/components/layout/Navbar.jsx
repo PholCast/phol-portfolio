@@ -38,7 +38,7 @@ const Navbar = ({
             onClick={() => onNavigate(0)}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="flex-shrink-0 text-left font-display text-base font-semibold tracking-[0.08em] text-white/90 sm:text-lg"
+            className="flex-shrink-0 text-left font-display text-[#60a7ff] text-base font-semibold tracking-[0.08em] sm:text-lg"
             aria-label={`${name} home`}
           >
             {name}

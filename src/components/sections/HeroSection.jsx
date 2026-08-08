@@ -27,7 +27,7 @@ const HeroSection = ({ copy, socials, onNavigate, profileImage }) => {
           sparkle
           gradientFrom="rgba(99, 102, 241, 0.35)"
           gradientTo="rgba(168, 85, 247, 0.2)"
-          glowColor="#044fd1"
+          glowColor="#007aff"
         />
       </div>
 
@@ -42,7 +42,7 @@ const HeroSection = ({ copy, socials, onNavigate, profileImage }) => {
           <h1 className="text-5xl font-semibold leading-[0.95] text-white sm:text-6xl lg:text-7xl xl:text-8xl">
             {copy.name}
           </h1>
-          <p className="mt-5 text-2xl font-medium text-[#60A5FA] sm:text-3xl">{copy.role}</p>
+          <p className="mt-5 text-2xl font-medium text-accent sm:text-3xl">{copy.role}</p>
           <p className="mt-6 max-w-xl text-base leading-8 text-white/70 sm:text-lg">{copy.description}</p>
 
           <div className="mt-8 grid w-full max-w-2xl grid-cols-2 gap-3 sm:grid-cols-4">

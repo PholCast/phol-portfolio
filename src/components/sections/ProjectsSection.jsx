@@ -43,7 +43,7 @@ const ProjectsSection = ({ projects, copy, locale, onSelectProject }) => {
                     <div>
                       <div className="flex items-start justify-between gap-4">
                         <div>
-                          <h3 className="text-2xl font-semibold text-white sm:text-3xl">{project.name[locale]}</h3>
+                          <h3 className="text-2xl font-semibold text-accent sm:text-3xl">{project.name[locale]}</h3>
                           <p className="mt-3 max-w-2xl text-sm leading-7 text-white/65 sm:text-base">
                             {project.shortDescription[locale]}
                           </p>
@@ -53,7 +53,7 @@ const ProjectsSection = ({ projects, copy, locale, onSelectProject }) => {
 
                       <div className="mt-5 flex flex-wrap gap-2">
                         {project.technologies.map((tech) => (
-                          <span key={tech} className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-white/76">
+                          <span key={tech} className="rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs font-medium tracking-wide text-white/80">
                             {tech}
                           </span>
                         ))}

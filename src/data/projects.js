@@ -4,6 +4,11 @@ import project1_2Image from '../assets/images/fluxlab/project_1_2.png'
 import project1_3Image from '../assets/images/fluxlab/project_1_3.png'
 import project2Image from '../assets/images/focushub/project_2.png'
 import project2_2Image from '../assets/images/focushub/project_2_2.png'
+import project3Image from '../assets/images/bitrimurl/project_3.png'
+import project3_2Image from '../assets/images/bitrimurl/project_3_2.png'
+import project3_3Image from '../assets/images/bitrimurl/project_3_3.png'
+import project3_4Image from '../assets/images/bitrimurl/project_3_4.png'
+import comingSoon from '../assets/videos/coming-soon.mp4'
 
 
 export const projects = [
@@ -27,7 +32,7 @@ export const projects = [
       project1_3Image
     ],
     videos: [
-      { src: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4', poster: project1Image }
+      { src: comingSoon, poster: project1Image }
     ]
   },
   {
@@ -49,30 +54,41 @@ export const projects = [
       project2_2Image
     ],
     videos: [
-      { src: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4', poster: project2Image }
+      { src: comingSoon, poster: project2Image }
     ]
   },
   {
     id: '3',
-    name: { es: 'Nebula Studio', en: 'Nebula Studio' },
+    name: { es: 'BiTrimURL', en: 'BiTrimURL' },
     shortDescription: {
-      es: 'Portafolio creativo para estudios y productos digitales con navegación fluida.',
-      en: 'Creative portfolio for studios and digital products with smooth navigation.'
+      es: 'Acortador de URLs full stack con códigos personalizados y estadísticas de clics.',
+      en: 'Full stack URL shortener with custom codes and click statistics.'
     },
     longDescription: {
-      es: 'Nebula Studio explora una experiencia editorial para mostrar trabajos, testimonios y procesos de forma elegante. El proyecto usa una composición más cinematográfica, con bloques horizontales, cards profundas y una narrativa visual que mantiene el foco en el contenido. El resultado sirve como referencia para portfolios, estudios de diseño y landing pages premium.',
-      en: 'Nebula Studio explores an editorial experience for showcasing work, testimonials and process in an elegant way. The project uses a more cinematic composition, with horizontal blocks, deep cards and a visual narrative that keeps the focus on the content. The result serves as a reference for portfolios, design studios and premium landing pages.'
+      es: 'BiTrimURL es una aplicación web full stack para acortar URLs rápidamente sin necesidad de crear una cuenta. Permite generar enlaces cortos, utilizar códigos personalizados y consultar estadísticas de clics, manteniendo un historial de los enlaces creados en el navegador. El proyecto cuenta con una API REST y dos implementaciones de backend: una desarrollada con Node.js y Express, y otra con Java y Spring Boot, ambas conectadas a una base de datos para gestionar los enlaces, redirecciones y conteo de clics.',
+      en: 'BiTrimURL is a full stack web application for shortening URLs quickly without requiring an account. It allows users to generate short links, use custom codes, and view click statistics while keeping a history of created links in the browser. The project includes a REST API and two backend implementations: one built with Node.js and Express, and another with Java and Spring Boot, both connected to a database to manage links, redirects, and click tracking.'
     },
-    technologies: ['React', 'Framer Motion', 'Swiper.js', 'Tailwind CSS', 'Vercel'],
-    github: 'https://github.com/',
-    demo: 'https://example.com',
-    mainImage: createProjectPreview({ title: 'Nebula Studio', tag: 'Editorial portfolio and storytelling', accent: '#f472b6', accentTwo: '#8b5cf6' }),
+    technologies: [
+      'Java',
+      'Spring Boot',
+      'Spring Data JPA',
+      'Node.js',
+      'Express',
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'PostgreSQL'
+    ],
+    github: 'https://github.com/PholCast/bitrim-url/',
+    demo: 'https://github.com/PholCast/bitrim-url/',
+    mainImage: project3Image,
     gallery: [
-      createProjectPreview({ title: 'Nebula Case Study', tag: 'Research and outcome', accent: '#a855f7', accentTwo: '#ec4899' }),
-      createProjectPreview({ title: 'Nebula Gallery', tag: 'Visual showcase', accent: '#38bdf8', accentTwo: '#a855f7' })
+      project3_2Image,
+      project3_3Image,
+      project3_4Image
     ],
     videos: [
-      { src: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4', poster: createProjectPreview({ title: 'Nebula motion', tag: 'Scroll and reveal', accent: '#ec4899', accentTwo: '#38bdf8' }) }
+      { src: comingSoon, poster: project3Image}
     ]
   }
 ]

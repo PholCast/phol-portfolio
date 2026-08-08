@@ -3,6 +3,7 @@
 
 @theme {
 	--font-display: 'Space Grotesk', 'Manrope', sans-serif;
+	--color-accent: #4699ff;
 }
 
 :root {
