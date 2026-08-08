@@ -38,7 +38,7 @@ const Navbar = ({
             onClick={() => onNavigate(0)}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="flex-shrink-0 text-left font-display text-[#60a7ff] text-base font-semibold tracking-[0.08em] sm:text-lg"
+            className="flex-shrink-0 text-left cursor-pointer font-display text-[#60a7ff] text-base font-semibold tracking-[0.08em] sm:text-lg"
             aria-label={`${name} home`}
           >
             {name}
@@ -60,7 +60,7 @@ const Navbar = ({
               onClick={onToggleLanguage}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex h-11 items-center rounded-full border border-white/10 bg-white/5 px-4 text-sm font-semibold tracking-[0.2em] text-white/85 transition hover:bg-white/10"
+              className="inline-flex h-11 items-center  cursor-pointer rounded-full border border-white/10 bg-white/5 px-4 text-sm font-semibold tracking-[0.2em] text-white/85 transition hover:bg-white/10"
               aria-label="Toggle language"
             >
               {language.toUpperCase()}

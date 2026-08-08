@@ -87,7 +87,7 @@ const ContactSection = ({ copy, socials }) => {
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="space-y-2 text-sm text-white/70">
-                <span>{copy.form.name}</span>
+                <span className="mb-3 block">{copy.form.name}</span>
                 <input
                   name="name"
                   value={form.name}
@@ -100,7 +100,7 @@ const ContactSection = ({ copy, socials }) => {
               </label>
 
               <label className="space-y-2 text-sm text-white/70">
-                <span>{copy.form.email}</span>
+                <span className="mb-3 block">{copy.form.email}</span>
                 <input
                   name="email"
                   type="email"
@@ -115,7 +115,7 @@ const ContactSection = ({ copy, socials }) => {
             </div>
 
             <label className="mt-4 block space-y-2 text-sm text-white/70">
-              <span>{copy.form.subject}</span>
+              <span className="mb-3 block">{copy.form.subject}</span>
               <input
                 name="subject"
                 value={form.subject}
@@ -128,7 +128,7 @@ const ContactSection = ({ copy, socials }) => {
             </label>
 
             <label className="mt-4 block space-y-2 text-sm text-white/70">
-              <span>{copy.form.message}</span>
+              <span className="mb-3 block">{copy.form.message}</span>
               <textarea
                 name="message"
                 rows="6"

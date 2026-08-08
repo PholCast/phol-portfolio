@@ -1,5 +1,12 @@
-import { FaJava, FaDocker, FaGitAlt } from 'react-icons/fa6'
+import { FaJava, FaDocker, FaGitAlt, FaAws } from 'react-icons/fa6'
+import { DiMsqlServer } from 'react-icons/di'
 import {
+  SiSupabase,
+  SiFirebase,
+  SiSpring,
+  SiPython,
+  SiHtml5,
+  SiCss,
   SiSpringboot,
   SiJavascript,
   SiReact,
@@ -88,27 +95,38 @@ export const mainSkills = [
 ]
 
 export const skillCategories = [
+  
+    {
+    key: 'languages',
+    title: { es: 'Lenguajes', en: 'Languages' },
+    items: [
+      { name: 'Java', icon: FaJava, color: 'rgba(245, 158, 11, 0.55)' },
+      { name: 'JavaScript', icon: SiJavascript, color: 'rgba(250, 204, 21, 0.55)' },
+      { name: 'TypeScript', icon: SiTypescript, color: 'rgba(59, 130, 246, 0.55)' },
+      { name: 'Python', icon: SiPython, color: 'rgba(59, 130, 246, 0.55)' }
+    ]
+  },
   {
     key: 'frontend',
     title: { es: 'Frontend', en: 'Frontend' },
     items: [
+      { name: 'HTML', icon: SiHtml5, color: 'rgba(249, 115, 22, 0.55)' },
+      { name: 'CSS', icon: SiCss, color: 'rgba(59, 130, 246, 0.55)' },
       { name: 'React', icon: SiReact, color: 'rgba(56, 189, 248, 0.55)' },
-      { name: 'JavaScript', icon: SiJavascript, color: 'rgba(250, 204, 21, 0.55)' },
-      { name: 'TypeScript', icon: SiTypescript, color: 'rgba(59, 130, 246, 0.55)' },
       { name: 'Angular', icon: SiAngular, color: 'rgba(239, 68, 68, 0.55)' },
       { name: 'Tailwind CSS', icon: SiTailwindcss, color: 'rgba(14, 165, 233, 0.55)' },
-      { name: 'Figma', icon: SiFigma, color: 'rgba(168, 85, 247, 0.55)' }
+      // { name: 'Figma', icon: SiFigma, color: 'rgba(168, 85, 247, 0.55)' }
     ]
   },
   {
     key: 'backend',
     title: { es: 'Backend', en: 'Backend' },
     items: [
-      { name: 'Java', icon: FaJava, color: 'rgba(245, 158, 11, 0.55)' },
       { name: 'Spring Boot', icon: SiSpringboot, color: 'rgba(74, 222, 128, 0.55)' },
+      { name: 'Spring', icon: SiSpring, color: 'rgba(34, 197, 94, 0.55)' },
       { name: 'NestJS', icon: SiNestjs, color: 'rgba(225, 29, 72, 0.55)' },
       { name: 'Node.js', icon: SiNodedotjs, color: 'rgba(34, 197, 94, 0.55)' },
-      { name: 'GraphQL', icon: SiGraphql, color: 'rgba(236, 72, 153, 0.55)' },
+      // { name: 'GraphQL', icon: SiGraphql, color: 'rgba(236, 72, 153, 0.55)' },
       { name: 'Jest', icon: SiJest, color: 'rgba(239, 68, 68, 0.55)' }
     ]
   },
@@ -118,8 +136,18 @@ export const skillCategories = [
     items: [
       { name: 'PostgreSQL', icon: SiPostgresql, color: 'rgba(59, 130, 246, 0.55)' },
       { name: 'MySQL', icon: SiMysql, color: 'rgba(14, 165, 233, 0.55)' },
-      { name: 'MongoDB', icon: SiMongodb, color: 'rgba(34, 197, 94, 0.55)' },
-      { name: 'Redis', icon: SiRedis, color: 'rgba(248, 113, 113, 0.55)' }
+      { name: 'SQL Server', icon: DiMsqlServer, color: 'rgba(239, 68, 68, 0.55)' },
+      // { name: 'MongoDB', icon: SiMongodb, color: 'rgba(34, 197, 94, 0.55)' },
+      // { name: 'Redis', icon: SiRedis, color: 'rgba(248, 113, 113, 0.55)' }
+    ]
+  },
+  {
+    key: 'cloud',
+    title: { es: 'Cloud y Servicios', en: 'Cloud & Services' },
+    items: [
+      { name: 'AWS', icon: FaAws, color: 'rgba(245, 158, 11, 0.55)' },
+      { name: 'Supabase', icon: SiSupabase, color: 'rgba(34, 197, 94, 0.55)' },
+      { name: 'Firebase', icon: SiFirebase, color: 'rgba(250, 204, 21, 0.55)' },
     ]
   },
   {
@@ -136,15 +164,35 @@ export const skillCategories = [
       { name: 'Linux', icon: SiLinux, color: 'rgba(251, 191, 36, 0.55)' }
     ]
   },
-  {
-    key: 'soft',
-    title: { es: 'Habilidades blandas', en: 'Soft skills' },
-    items: [
-      { name: 'Trabajo en equipo', icon: LuUsers, color: 'rgba(96, 165, 250, 0.55)' },
-      { name: 'Resolución de problemas', icon: LuPuzzle, color: 'rgba(168, 85, 247, 0.55)' },
-      { name: 'Comunicación', icon: LuMessagesSquare, color: 'rgba(52, 211, 153, 0.55)' },
-      { name: 'Adaptabilidad', icon: LuShieldCheck, color: 'rgba(248, 113, 113, 0.55)' },
-      { name: 'Gestión del tiempo', icon: LuClock3, color: 'rgba(250, 204, 21, 0.55)' }
-    ]
-  }
+{
+  key: 'soft',
+  title: { es: 'Habilidades blandas', en: 'Soft skills' },
+  items: [
+    {
+      name: { es: 'Trabajo en equipo', en: 'Teamwork' },
+      icon: LuUsers,
+      color: 'rgba(96, 165, 250, 0.55)'
+    },
+    {
+      name: { es: 'Resolución de problemas', en: 'Problem solving' },
+      icon: LuPuzzle,
+      color: 'rgba(168, 85, 247, 0.55)'
+    },
+    {
+      name: { es: 'Comunicación', en: 'Communication' },
+      icon: LuMessagesSquare,
+      color: 'rgba(52, 211, 153, 0.55)'
+    },
+    {
+      name: { es: 'Adaptabilidad', en: 'Adaptability' },
+      icon: LuShieldCheck,
+      color: 'rgba(248, 113, 113, 0.55)'
+    },
+    {
+      name: { es: 'Gestión del tiempo', en: 'Time management' },
+      icon: LuClock3,
+      color: 'rgba(250, 204, 21, 0.55)'
+    }
+  ]
+}
 ]

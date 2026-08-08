@@ -12,7 +12,7 @@ const GalleryArrowButton = ({ direction, onClick, disabled = false, className = 
         onClick={onClick}
         disabled={disabled}
         aria-label={direction === 'prev' ? 'Previous image' : 'Next image'}
-        className={`inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-slate-950/75 text-white shadow-[0_10px_30px_rgba(0,0,0,0.45)] backdrop-blur-md transition duration-200 hover:scale-105 hover:bg-slate-900/90 disabled:cursor-not-allowed disabled:opacity-40 ${className}`}
+        className={`inline-flex h-11 w-11 items-center cursor-pointer justify-center rounded-full border border-white/15 bg-slate-950/75 text-white shadow-[0_10px_30px_rgba(0,0,0,0.45)] backdrop-blur-md transition duration-200 hover:scale-105 hover:bg-slate-900/90 disabled:cursor-not-allowed disabled:opacity-40 ${className}`}
     >
         {direction === 'prev' ? <FaChevronLeft className="h-3.5 w-3.5" /> : <FaChevronRight className="h-3.5 w-3.5" />}
     </button>
@@ -58,7 +58,7 @@ const MediaSlide = ({
                     <button
                         type="button"
                         onClick={onOpenViewer}
-                        className="absolute bottom-3 right-3 z-20 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/65 px-3 py-2 text-xs font-medium text-white shadow-[0_10px_25px_rgba(0,0,0,0.35)] backdrop-blur-md transition hover:bg-black/80"
+                        className="absolute bottom-3 right-3 z-20 inline-flex items-center gap-2 rounded-full border cursor-pointer border-white/10 bg-black/65 px-3 py-2 text-xs font-medium text-white shadow-[0_10px_25px_rgba(0,0,0,0.35)] backdrop-blur-md transition hover:bg-black/80"
                         aria-label={viewerLabel}
                     >
                         <FaExpand />
@@ -111,7 +111,7 @@ const ProjectModal = ({ isOpen, onClose, project, copy, locale }) => {
                             <button
                                 type="button"
                                 onClick={onClose}
-                                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/80 transition hover:bg-white/10"
+                                className="inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/80 transition hover:bg-white/10"
                                 aria-label={copy.close}
                             >
                                 <FaXmark />
@@ -165,7 +165,7 @@ const ProjectModal = ({ isOpen, onClose, project, copy, locale }) => {
                                     <h4 className="text-sm font-semibold uppercase tracking-[0.35em] text-white/50">{copy.tech}</h4>
                                     <div className="mt-4 flex flex-wrap gap-2">
                                         {project.technologies.map((tech) => (
-                                            <span key={tech} className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-white/78">
+                                            <span key={tech} className="rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-1 text-xs font-medium tracking-wide text-white/80">
                                                 {tech}
                                             </span>
                                         ))}
@@ -242,7 +242,7 @@ const ProjectModal = ({ isOpen, onClose, project, copy, locale }) => {
                                     <button
                                         type="button"
                                         onClick={() => setIsImageViewerOpen(false)}
-                                        className="absolute right-4 top-4 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white transition hover:bg-white/15"
+                                        className="absolute right-4 top-4 inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-white/10 bg-white/10 text-white transition hover:bg-white/15"
                                         aria-label={copy.close}
                                     >
                                         <FaXmark />

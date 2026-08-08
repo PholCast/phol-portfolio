@@ -60,7 +60,7 @@ const SkillsSection = ({ mainSkills, categories, copy, locale }) => {
                           <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/8 text-2xl text-white">
                             <Icon />
                           </span>
-                          <span className="text-lg font-semibold text-white">{skill.name}</span>
+                          <span className="text-lg font-semibold text-white">{typeof skill.name === 'object' ? skill.name[locale] : skill.name}</span>
                         </div>
                       </SpotlightCard>
                     )
