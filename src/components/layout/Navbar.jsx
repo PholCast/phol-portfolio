@@ -32,7 +32,7 @@ const Navbar = ({
     <header className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 sm:px-6">
       <div className="mx-auto flex max-w-7xl items-center gap-4">
         {/* Contenedor visual del navbar */}
-        <div className="flex min-w-0 flex-1 items-center gap-4 rounded-[28px] border border-white/10 bg-[rgba(6,12,24,0.68)] px-4 py-3 shadow-[0_20px_80px_rgba(0,0,0,0.35)] backdrop-blur-2xl max-[970px]:justify-between">
+        <div className="flex min-w-0 flex-1 items-center gap-4 rounded-[28px] border border-white/10 bg-[rgba(6,12,24,0.68)] px-4 py-3 shadow-[0_20px_80px_rgba(0,0,0,0.35)] backdrop-blur-2xl max-[975px]:justify-between">
           <motion.button
             type="button"
             onClick={() => onNavigate(0)}
@@ -45,7 +45,7 @@ const Navbar = ({
           </motion.button>
 
           {/* Navegación desktop */}
-          <div className="hidden min-w-0 flex-1 justify-center min-[970px]:flex">
+          <div className="hidden min-w-0 flex-1 justify-center min-[975px]:flex">
             <GooeyNav
               items={navItems}
               activeIndex={activeIndex}
@@ -69,7 +69,7 @@ const Navbar = ({
         </div>
 
         {/* Menú móvil: fuera del contenedor visual */}
-        <div className="relative z-[100] flex-shrink-0 min-[970px]:hidden">
+        <div className="relative z-[100] rounded-[28px] border border-white/10 bg-[rgba(6,12,24,0.68)] px-4 py-5 shadow-[0_20px_80px_rgba(0,0,0,0.35)]  flex-shrink-0 min-[975px]:hidden">
           <StaggeredMenu
             isFixed
             externalToggle
