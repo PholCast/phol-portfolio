@@ -126,6 +126,7 @@ const GooeyNav = ({
     const activeLi = navRef.current.querySelectorAll('li')[activeIndex];
     if (activeLi) {
       updateEffectPosition(activeLi);
+      filterRef.current?.classList.add('active');
       textRef.current?.classList.add('active');
     }
     const resizeObserver = new ResizeObserver(() => {
