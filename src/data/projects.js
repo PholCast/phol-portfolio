@@ -8,6 +8,10 @@ import project3Image from '../assets/images/bitrimurl/project_3.png'
 import project3_2Image from '../assets/images/bitrimurl/project_3_2.png'
 import project3_3Image from '../assets/images/bitrimurl/project_3_3.png'
 import project3_4Image from '../assets/images/bitrimurl/project_3_4.png'
+import project4Image from '../assets/images/cvedashboard/project_4.png'
+import project4_2Image from '../assets/images/cvedashboard/project_4_2.png'
+import project4_3Image from '../assets/images/cvedashboard/project_4_3.png'
+import project4_4Image from '../assets/images/cvedashboard/project_4_4.png'
 import comingSoon from '../assets/videos/coming-soon.mp4'
 
 
@@ -89,6 +93,30 @@ export const projects = [
     ],
     videos: [
       { src: comingSoon, poster: project3Image}
+    ]
+  },
+  {
+    id: '4',
+    name: { es: 'CVE Security Dashboard', en: 'CVE Security Dashboard' },
+    shortDescription: {
+      es: 'Pipeline de datos en Python y dashboard web para analizar vulnerabilidades explotadas conocidas, combinando el catálogo KEV de CISA con la API de NVD (NIST) para visualizar métricas CVSS, severidad y relaciones CWE-CVE.',
+      en: 'Python data pipeline and web dashboard for analyzing known exploited vulnerabilities, combining the CISA KEV catalog with the NVD (NIST) API to visualize CVSS metrics, severity, and CWE-CVE relationships.'
+    },
+    longDescription: {
+      es: 'CVE Security Dashboard es una solución de análisis de vulnerabilidades compuesta por un pipeline de datos en Python y un dashboard web interactivo. El pipeline procesa el catálogo Known Exploited Vulnerabilities de CISA y consulta la API de NVD (NIST) por cada CVE para extraer su descripción, métricas CVSS v3.1 y v2 (score de explotabilidad, impacto, base score, severidad y vector string) y las debilidades CWE asociadas. Incluye caché local de respuestas, control de rate limit con reintentos y manejo de errores para procesar más de 1.600 vulnerabilidades de forma confiable.\n\nA partir de los datos obtenidos, el sistema construye la relación CWE-CVE, el ranking de CWE más frecuentes, la distribución de CWE por criticidad y estadísticas promedio de CVSS, exportando todo en un JSON estructurado. El dashboard consume estos resultados y presenta indicadores clave, gráficas de severidad, promedios CVSS, dispersión de explotabilidad vs. impacto, top de CWE, un explorador de CVE con búsqueda, filtros y paginación, y una vista de detalle por vulnerabilidad con información de NVD y CISA.',
+      en: 'CVE Security Dashboard is a vulnerability analysis solution made up of a Python data pipeline and an interactive web dashboard. The pipeline processes the CISA Known Exploited Vulnerabilities catalog and queries the NVD (NIST) API for each CVE to extract its description, CVSS v3.1 and v2 metrics (exploitability score, impact score, base score, severity, and vector string), and associated CWE weaknesses. It includes local response caching, rate-limit handling with retries, and error handling to reliably process more than 1,600 vulnerabilities.\n\nFrom the collected data, the system builds the CWE-CVE relationship map, a ranking of the most frequent CWEs, the CWE distribution by severity, and average CVSS statistics, exporting everything to a structured JSON file. The dashboard consumes these results and presents key indicators, severity charts, CVSS averages, an exploitability vs. impact scatter plot, top CWEs, a CVE explorer with search, filters, and pagination, and a per-vulnerability detail view with NVD and CISA information.'
+    },
+    technologies: ['Python', 'Pandas', 'Requests', 'React', 'TypeScript', 'Tailwind CSS', 'shadcn/ui', 'Recharts', 'React Router'],
+    github: 'https://github.com/PholCast/cve-dashboard-frontend',
+    demo: 'https://cve-dashboard-frontend.vercel.app/',
+    mainImage: project4Image,
+    gallery: [
+      project4_2Image,
+      project4_3Image,
+      project4_4Image
+    ],
+    videos: [
+      { src: comingSoon, poster: project4Image }
     ]
   }
 ]

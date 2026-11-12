@@ -16,7 +16,7 @@ import profileImage from './assets/images/phol-profile.webp'
 const sectionIds = ['hero', 'about', 'projects', 'skills', 'contact']
 
 function App() {
-  const [language, setLanguage] = useState(() => localStorage.getItem('portfolio-language') || 'es')
+  const [language, setLanguage] = useState(() => localStorage.getItem('portfolio-language') || 'en')
   const [activeSection, setActiveSection] = useState('hero')
   const [selectedProject, setSelectedProject] = useState(null)
   const pendingNavTargetRef = useRef(null)
